@@ -25,21 +25,46 @@ const items = ['Pencil', 'Notebook', 'yo-yo', 'Gum'];
 */
 
 
-function getLength(arr, cb) {
-  // getLength passes the length of the array into the callback.
+
+
+function getLength(arr, cb) { //this is the higher order function
+   return cb(arr);
+}
+const arrayLength = function (arr){ //this is the callback function
+  return (arr.length);
+};
+console.log(getLength(items, arrayLength)); //here is where i invoke the actual thing
+
+
+
+
+
+
+
+
+function last(arr, cb) { //this is the HOF (higher order function)
+  return cb(arr[arr.length-1]);
 }
 
-function last(arr, cb) {
-  // last passes the last item of the array into the callback.
+
+last(items, function(last){ //this is the cb
+  console.log(last);
+});
+
+
+
+
+
+function sumNums(x, y, cb) {   //this is the HOF (higher order function)
+  return cb(x, y);
 }
 
-function sumNums(x, y, cb) {
-  // sumNums adds two numbers (x, y) and passes the result to the callback.
+const add = function(x,y) {   //this is the cb (callback)
+  return x + y;
 }
 
-function multiplyNums(x, y, cb) {
-  // multiplyNums multiplies two numbers and passes the result to the callback.
-}
+console.log(sumNums(1, 1, add)); //this is where we run it 
+
 
 function contains(item, list, cb) {
   // contains checks if an item is present inside of the given array/list.
